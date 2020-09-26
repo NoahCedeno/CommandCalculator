@@ -23,5 +23,13 @@ public abstract class MathCommand {
 	public String toString() {
 		return Double.toString(this.execute());
 	}
+	
+	public double getX() {
+		return this.x;
+	}
+	
+	public double getY() {
+		return this.y;
+	}
 
 }
