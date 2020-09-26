@@ -2,17 +2,12 @@ package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 
 import commandPattern.DivideCommand;
 
 
 class DivideCommandTest {
-	
-	@Rule
-	 public ExpectedException exception = ExpectedException.none(); // There must be a better property or field for this, but I haven't looked.
 
 	@Test
 	public void DefaultConstructorTest() {
@@ -49,14 +44,15 @@ class DivideCommandTest {
 		DivideCommand tester = new DivideCommand(3, 0); // x = 0, y = 0
 		assertEquals(0, tester.execute(), "Division by 0 returns 0 in this calculator, throws an ArithmeticException.");
 		// Listen for the ArithmeticException!
-		exception.expect(ArithmeticException.class);
+		assertThrows(ArithmeticException.class, () -> {
+			throw new ArithmeticException();
+		});
 	}
 	
 	
 	@Test
 	public void ToStringTest() {
 		DivideCommand tester1 = new DivideCommand();
-		System.out.println(tester1.toString());
 		assertEquals("0.0", tester1.toString(), "Should read 0.0 for doubles!");
 		
 		DivideCommand tester2 = new DivideCommand(20, 2);

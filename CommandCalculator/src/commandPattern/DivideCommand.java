@@ -15,7 +15,7 @@ public class DivideCommand extends MathCommand {
 	 * @author NoahCedeno
 	 */
 	@Override
-	public double execute() {
+	public double execute() throws ArithmeticException {
 		double result;
 		
 		try {
@@ -26,6 +26,8 @@ public class DivideCommand extends MathCommand {
 		}
 		catch (ArithmeticException exOb) {
 			// Accounts for NaN results and Infinity results
+			// As well, result, x, and y are all defined for more diverse exception handling.
+			// TODO: More verbose exception handling? (Setting exOb text or something? Would have to test it too...)
 			System.out.println("EY YO you can't divide by zero!");
 			result = 0.0; // Return 0.0 (Maybe not helpful..?)
 		}
