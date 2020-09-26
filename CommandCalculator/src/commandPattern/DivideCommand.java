@@ -16,13 +16,18 @@ public class DivideCommand extends MathCommand {
 	 */
 	@Override
 	public double execute() {
-		double result = 0.0;
+		double result;
 		
 		try {
-			result =  this.x / this.y;
+			if (this.y == 0) {
+				throw new ArithmeticException();
+			}
+			result = this.x / this.y;
 		}
 		catch (ArithmeticException exOb) {
+			// Accounts for NaN results and Infinity results
 			System.out.println("EY YO you can't divide by zero!");
+			result = 0.0; // Return 0.0 (Maybe not helpful..?)
 		}
 		// Ultimately return result (or 0.0 if dividing by zero).
 		return result;
